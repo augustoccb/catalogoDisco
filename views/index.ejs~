@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Catalogo</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+     
+    <div="DiscosController">
+       <h1>Catalogo de Discos</h1>
+
+       <table style="border-collapse: collapse;" border="1">
+        <tr>
+          <th>artista</th><th>album</th><th>genero</th><th>ano</th>
+          
+        </tr>
+        <tr ng-repeat="disco in discos">
+          <td>{{disco.artista}}</td>
+          <td>{{disco.album}}</td>
+          <td>{{disco.genero}}</td>
+          <td>{{disco.ano}}</td> 
+          <td><button ng-click="editarDisco($index)">editar</button></td>
+          <td><button ng-click="deleteDisco($index)">deletar</button></td>
+        </tr>
+       </table>
+       <input type="text" ng-model="disco.artista"placeholder="artista"/><br>
+       <input type="text" ng-model="disco.album"placeholder="album"/><br>
+       <input type="text" ng-model="disco.genero"placeholder="genero"/><br>
+       <input type="text" ng-model="disco.ano"placeholder="ano"/><br>
+       <button ng-click="adicionaDisco(disco)">Adicionar</button>
+     </div>
+	<script src="/javascripts/DiscosController.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.4/          angular.min.js"></script>
+  </body>
+</html>

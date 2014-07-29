@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="listaTelefonica">
+   <head>
+     <meta charset="utf-8">
+     <title>AngularJS - Tableless</title>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js"></script>
+     <script>
+     var app = angular.module("listaTelefonica",[]);
+     app.controller("listaTelefonicaCtrl",function($scope){
+      $scope.titulo = "Lista Telefonica";
+
+      
+      
+      $scope.discos=[{artista:"pedro",album:"pedras",genero:"axe",ano:"1990"},
+                     {artista:"marcos",album:"marcando",genero:"pank",ano:"2014"}];
+      $scope.adicionaDisco=function(disco){
+      $scope.discos.push(angular.copy(disco));
+      delete $scope.disco;
+      };
+
+
+     $scope.editarDisco = function(index){
+        $scope.disco = $scope.discos[index];
+        $scope.edit = true;
+       };
+
+
+
+     $scope.deleteDisco = function(index){
+        $scope.discos.splice(index, 1);
+       };
+
+    });
+    
+    </script>
+   </head>
+
+   <body ng-controller="listaTelefonicaCtrl">
+    
+    <h1>{{titulo}}</h1>
+
+       <table style="border-collapse: collapse;" border="1">
+        <tr>
+          <th>artista</th><th>album</th><th>genero</th><th>ano</th>
+        </tr>
+        <tr ng-repeat="disco in discos">
+          <td>{{disco.artista}}</td>
+          <td>{{disco.album}}</td>
+          <td>{{disco.genero}}</td>
+          <td>{{disco.ano}}</td> 
+          <td><button ng-click="editarDisco($index)">editar</button></td>
+          <td><button ng-click="deleteDisco($index)">deletar</button></td>
+        </tr>
+       </table>
+       <input type="text" ng-model="disco.artista"placeholder="artista"/><br>
+       <input type="text" ng-model="disco.album"placeholder="album"/><br>
+       <input type="text" ng-model="disco.genero"placeholder="genero"/><br>
+       <input type="text" ng-model="disco.ano"placeholder="ano"/><br>
+       <button ng-click="adicionaDisco(disco)">Adicionar</button>
+
+   </body>
+
+ </html>

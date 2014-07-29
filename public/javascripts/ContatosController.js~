@@ -1,0 +1,26 @@
+var app = angular.module("catalogoDisco",[]);
+     app.controller("catalogoDiscoCtrl",function($scope){
+      $scope.titulo = "Catalogo de Discos";
+
+   
+      $scope.discos=[{nome:"pedro",telefone:"888888"},
+                       {nome:"joao",telefone:"9988766"}];
+      $scope.adicionaDisco=function(disco){
+      $scope.discos.push(angular.copy(disco));
+      delete $scope.disco;
+      };
+
+
+     $scope.editarDisco = function(index){
+        $scope.disco = $scope.discos[index];
+        $scope.edit = true;
+       };
+
+
+
+     $scope.deleteDisco = function(index){
+        $scope.discos.splice(index, 1);
+       };
+
+    });
+    
